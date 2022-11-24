@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>我的新网页</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="Generator" content="Editplus" />
+  <meta name="Author" content="" />
+  <meta name="Description" content="" />
+  <meta name="Keywords" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script>
+        alert("恭喜你发现了一个正在努力学习的计算机小白");
+    </script> -->
+</head>
+
+<body>
+    <!-- <bgsound src="material/苦茶子.mp3" autostart="true" controls="console/smallconsole/playbutton/ 
+    pausebutton/stopbutton/volumelever" loop="1"></bgsound>-->
+    <!-- <embed src="material/苦茶子.mp3" hidden="true" -->
+    <!-- autostart="true" loop="true"/> -->
+    <!-- <audio src="material/苦茶子.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto"></audio> -->
+    <!-- <bgsound src=material/苦茶子.mp3 loop=-1> -->
+    <!-- <bgsound src="material/苦茶子.mp3" autostart=true loop=infinite>  -->
+     <video id="music" controls="true" autoplay="true" name="media" loop="true" hidden="true">
+                 <source src="material/苦茶子.mp3" type="audio/mpeg">
+                </video> 
+    <!-- <video controls="" autoplay="" name="media"> <source src="material/苦茶子.mp3" type="audio/mpeg">
+                </video> -->
+    <!-- <embed src="material/苦茶子.mp3" hidden="true" autostart="true" loop="true"> -->
+
+    <ul>
+        <li>
+            <a href="ax/index.html">
+                <ion-icon name="home-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="3.html">
+                <ion-icon name="person-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="yybfq/index.html">
+                <ion-icon name="musical-notes-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="1.html">
+                <ion-icon name="folder-outline"></ion-icon>
+            </a>
+        </li>
+        <li>
+            <a href="2.html">
+                <ion-icon name="qr-code-outline"></ion-icon>
+            </a>
+        </li>
+        <!-- <table border="1">
+            <tr>
+                <td>111</td>
+                <td>222</td>
+                <td>333</td>
+            </tr>
+            <tr>
+                <td>333</td>
+                <td>222</td>
+                <td>111</td>
+            </tr>
+        </table> -->
+        <div id="marker"></div>
+</ul>
+     <!-- <audio id="music" autoplay="autoplay" controls="controls" loop="loop" preload="auto" src="material/苦茶子.mp3">
+     </audio> -->
+     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+     <script>
+        window.onload = function () {
+            setInterval("toggleSound()", 1);
+        };
+        function toggleSound() {
+            var music = document.getElementById("music"); //获取ID
+            if (music.paused) {
+                //判读是否播放
+                music.paused = false;
+                music.play(); //没有就播放
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+            function audioAutoPlay() {
+                var audio = document.getElementById("music");
+                audio.play();
+                document.addEventListener(
+                    "WeixinJSBridgeReady",
+                    function () {
+                        audio.play();
+                    },
+                    false
+                );
+            }
+            audioAutoPlay();
+        });
+        //--创建触摸监听，当浏览器打开页面时，触摸屏幕触发事件，进行音频播放
+
+
+        let marker = document.querySelector("#marker");
+        let list = document.querySelectorAll("ul li");
+
+        function moveIndicator(e) {
+            marker.style.left = e.offsetLeft + "px";
+            marker.style.width = e.offsetWidth + "px";
+        }
+
+        list.forEach((link) => {
+            link.addEventListener("mousemove", (e) => {
+                moveIndicator(e.target);
+            });
+        });
+        // add active class in hovered list item
+        function activelink() {
+            list.forEach((item) => item.classList.remove("active"));
+            this.classList.add("active");
+        }
+
+        list.forEach((item) => item.addEventListener("mouseover", activelink));
+    </script>
+</body>
+
+</html>
